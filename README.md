@@ -5,6 +5,8 @@ Using this class you don't have to Pointer Scan anymore for values sitting in na
 
 This comes with it's own rpm capabilities, so you technically don't have to rely on other Memory Libs. If you want to improve upon on this project, fork it from here: https://github.com/TheLeftExit/TheLeftExit.Memory
 
+## Keep in mind that RTTI information only generates for classes that contain virtual function tables, and the method implemented here is only guaranteed for MSVC-built applications. Admin rights and a 64-bit system required.
+
 The main purpose of this project was to implement some useful RTTI-based functionality I hadn't been able to find outside of larger projects, if at all.
 
 ![image](https://user-images.githubusercontent.com/42414542/121788422-749b4880-cbcd-11eb-915f-46eaf45c2b18.png)
@@ -23,6 +25,3 @@ List<int> ScanClassNameOffsets(...)
 ```
 
 With the right applications, you can ditch your old multi-level pointers in favor of lists of class names which, unlike static offsets, won't change with version updates.
-
-
-## Keep in mind that RTTI information only generates for classes that contain virtual function tables, and the method implemented here is only guaranteed for MSVC-built applications. Admin rights and a 64-bit system required.
