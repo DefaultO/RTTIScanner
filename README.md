@@ -7,21 +7,24 @@ This comes with it's own rpm capabilities, so you technically don't have to rely
 
 ## Keep in mind that RTTI information only generates for classes that contain virtual function tables, and the method implemented here is only guaranteed for MSVC-built applications. Admin rights and a 64-bit system required.
 
-The main purpose of this project was to implement some useful RTTI-based functionality I hadn't been able to find outside of larger projects, if at all.
+The main purpose of this project was to implement some useful RTTI-based functionality I hadn't been able to find outside of larger projects, if at all. With the right applications, you can ditch your old multi-level pointers in favor of lists of class names which, unlike static offsets, won't change with version updates.
+
 
 ![image](https://user-images.githubusercontent.com/42414542/121788422-749b4880-cbcd-11eb-915f-46eaf45c2b18.png)
 
-This allows you to probe for base class names of a structure, similar to what Cheat Engine does when displaying Pointer to intance of ClassName in its Structure Viewer.
+## Usage
 ```csharp
-string[] GetRTTIClassNames(this IntPtr handle, long address)
+// Taken from https://github.com/DefaultO/TheLeftExit.Memory/blob/8bb868205239ccbbb2681aa470865069515fee9a/Memory.cs#L120
+public static string[] GetRTTIClassNames(this IntPtr handle, long address)
 ```
-This allows you to scan a given address range for a pointer to a structure with a specific name.
+``GetRTTIClassNames`` allows you to probe for base class names of a structure, similar to what Cheat Engine does when displaying **Pointer to intance of *ClassName*** in its Structure Viewer.
 ```csharp
-long ScanClassName(...)
+// Taken from https://github.com/DefaultO/TheLeftExit.Memory/blob/8bb868205239ccbbb2681aa470865069515fee9a/Memory.cs#L155
+public static long ScanClassName(this IntPtr handle, long baseAddress, string className, int maxOffset)
 ```
-This function generates a multi-level pointer based on names of structures along its way.
+``ScanClassName`` allows you to scan a given address range for a pointer to a structure with a specific name.
 ```csharp
-List<int> ScanClassNameOffsets(...)
+// Taken from https://github.com/DefaultO/TheLeftExit.Memory/blob/8bb868205239ccbbb2681aa470865069515fee9a/Memory.cs#L173
+public static List<int> ScanClassNameOffsets(this IntPtr handle, long baseAddress, params (string className, int maxOffset)[] searchParameters)
 ```
-
-With the right applications, you can ditch your old multi-level pointers in favor of lists of class names which, unlike static offsets, won't change with version updates.
+``ScanClassNameOffsets`` function generates a multi-level pointer based on names of structures along its way.
