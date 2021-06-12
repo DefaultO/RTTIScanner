@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31402.337
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheLeftExit.Memory", "TheLeftExit.Memory.csproj", "{D8E8F4D5-D9B6-4009-B932-ADE13EA9154D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D8E8F4D5-D9B6-4009-B932-ADE13EA9154D}.Debug|x64.ActiveCfg = Debug|x64
+		{D8E8F4D5-D9B6-4009-B932-ADE13EA9154D}.Debug|x64.Build.0 = Debug|x64
+		{D8E8F4D5-D9B6-4009-B932-ADE13EA9154D}.Release|x64.ActiveCfg = Release|x64
+		{D8E8F4D5-D9B6-4009-B932-ADE13EA9154D}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9747D9D5-9C74-43D5-9F54-7D7F3EE193F6}
+	EndGlobalSection
+EndGlobal
