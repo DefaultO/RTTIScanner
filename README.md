@@ -28,3 +28,24 @@ public static long ScanClassName(this IntPtr handle, long baseAddress, string cl
 public static List<int> ScanClassNameOffsets(this IntPtr handle, long baseAddress, params (string className, int maxOffset)[] searchParameters)
 ```
 ``ScanClassNameOffsets`` function generates a multi-level pointer based on names of structures along its way.
+
+## Example
+```csharp
+Process gt = Process.GetProcessesByName("Growtopia").Single();
+IntPtr gthandle = gt.OpenProcess();
+
+long baseAddress = (long)gt.MainModule.BaseAddress;
+string res = "Growtopia.exe+";
+
+string[] targetClasses = new string[] { "App", "GameLogicComponent", "NetAvatar" };
+string offsets = "";
+long address = 0;
+long lastAddress = baseAddress;
+for (int index = 0; index < targetClasses.Length; index++)
+{
+    address = gthandle.ScanForPointerToClass(targetClasses[index], lastAddress, index == 0 ? 0x800000 : 0x1000);
+    offsets += (address - lastAddress).ToString("X") + Environment.NewLine;
+    gthandle.ReadInt64(address, out lastAddress);
+}
+MessageBox.Show(offsets);
+```
