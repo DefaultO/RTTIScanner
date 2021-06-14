@@ -49,3 +49,18 @@ for (int index = 0; index < targetClasses.Length; index++)
 }
 MessageBox.Show(offsets);
 ```
+Will result into these messagebox contents:
+
+![image](https://user-images.githubusercontent.com/42414542/121859416-f7202700-ccf7-11eb-9c5e-7e73bd50ae7b.png)
+
+The long hex string would stand behind the "res" string (line 5). And the shorter ones would be the offsets.
+Final product could look like this "Growtopia.exe+7667F8,AB0,198" (Memory.dll Design) or my / Azukii's Design:
+```csharp
+public static Pointer NetAvatar = new Pointer
+{
+    Module = "Growtopia.exe",
+    Offset = "0x7667F8",
+    Offsets = new string[] { "AB0", "198" }
+};
+```
+
