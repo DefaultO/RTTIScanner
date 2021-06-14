@@ -53,8 +53,7 @@ Will result into these messagebox contents:
 
 ![image](https://user-images.githubusercontent.com/42414542/121859416-f7202700-ccf7-11eb-9c5e-7e73bd50ae7b.png)
 
-The long hex string would stand behind the "res" string (line 5). And the shorter ones would be the offsets.
-Final product could look like this "Growtopia.exe+7667F8,AB0,198" (Memory.dll Design) or my / Azukii's Design:
+Final product could look like this ``"Growtopia.exe+7667F8,AB0,198"``, which is what the [**Memory.dll**](https://github.com/erfg12/memory.dll/) takes as input, or [**my**](https://github.com/DefaultO/Intralism-Bot-2020/blob/master/src/Patchables.cs) / [**Azukii's**](https://github.com/Azukee/osu-rx/blob/master/osu!rx/osu/Memory/Signatures.cs) (he uses less strings, but it's heavily inspired by his Patchables Class) Design:
 ```csharp
 public static Pointer NetAvatar = new Pointer
 {
