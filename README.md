@@ -38,8 +38,6 @@ This Code Snippet got taken out of **TDEM** and shows how easy it is to dynamica
             Console.WriteLine($"[>] Found pointer to app at (HEX){pointerToApp.ToString("X")}", goodMessage);
             offsetToApp = pointerToApp - baseAddress;
             Console.WriteLine($"App Offset: (HEX){offsetToApp.ToString("X")}", comment);
-            
-            // ...
         }
 ```
 Looking at it you see this function call here which is all you need next to an open handle to the process:
