@@ -7,8 +7,8 @@
     <ProjectGuid>{D8E8F4D5-D9B6-4009-B932-ADE13EA9154D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TheLeftExit</RootNamespace>
-    <AssemblyName>TheLeftExit.Memory</AssemblyName>
+    <RootNamespace>RTTIScanner</RootNamespace>
+    <AssemblyName>RTTIScanner</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Memory.cs" />
+    <Compile Include="PointerHunter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
