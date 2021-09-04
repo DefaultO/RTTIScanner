@@ -1,65 +1,6 @@
-[![CodeFactor](https://www.codefactor.io/repository/github/defaulto/theleftexit.memory/badge)](https://www.codefactor.io/repository/github/defaulto/theleftexit.memory)
-### If this Project/Class helped you in your own Project, don't mind starring the original repository, found here: https://github.com/TheLeftExit/TheLeftExit.Memory
-
-Using this class you don't have to Pointer Scan anymore for values sitting in named structures. Given you found your Values once, and noticed that the Structure they were in got a name, let's say, using the Cheat Engine's Feature **dissect data/structures** found in Memory Viewer > Tools, this will return you working and up-to-date pointers.
-
-This comes with it's own rpm capabilities, so you technically don't have to rely on other Memory Libs. If you want to improve upon on this project, fork it from here: https://github.com/TheLeftExit/TheLeftExit.Memory
-
-## Keep in mind that RTTI information only generates for classes that contain virtual function tables, and the method implemented here is only guaranteed for MSVC-built applications. Admin rights and a 64-bit system is required.
+![RTTIScanner-Banner](https://user-images.githubusercontent.com/42414542/132094787-86636a02-8757-4f61-bd74-bcb20b463350.png)
+# ***RTTI*SCANNER**
+All Credits go towards **[@TheLeftExit](https://github.com/TheLeftExit)**. I believe knowing several technicues like this one as a hacker, reverser or just a programmer is important as they make our lifes easier. RTTI-Scanning is the yet unknown sister next to Signature/AoB scanning and Pointer Hunting, and all it needs is the right environment and the structure/class name to be the perfect option out of all these options.
 
 The main purpose of this project was to implement some useful RTTI-based functionality I hadn't been able to find outside of larger projects, if at all. With the right applications, you can ditch your old multi-level pointers in favor of lists of class names which, unlike static offsets, won't change with version updates.
-
-
-![image](https://user-images.githubusercontent.com/42414542/121788422-749b4880-cbcd-11eb-915f-46eaf45c2b18.png)
-
-## Usage
-```csharp
-// Taken from https://github.com/DefaultO/TheLeftExit.Memory/blob/8bb868205239ccbbb2681aa470865069515fee9a/Memory.cs#L120
-public static string[] GetRTTIClassNames(this IntPtr handle, long address)
-```
-``GetRTTIClassNames`` allows you to probe for base class names of a structure, similar to what Cheat Engine does when displaying **Pointer to intance of *ClassName*** in its Structure Viewer.
-```csharp
-// Taken from https://github.com/DefaultO/TheLeftExit.Memory/blob/8bb868205239ccbbb2681aa470865069515fee9a/Memory.cs#L155
-public static long ScanClassName(this IntPtr handle, long baseAddress, string className, int maxOffset)
-```
-``ScanClassName`` allows you to scan a given address range for a pointer to a structure with a specific name.
-```csharp
-// Taken from https://github.com/DefaultO/TheLeftExit.Memory/blob/8bb868205239ccbbb2681aa470865069515fee9a/Memory.cs#L173
-public static List<int> ScanClassNameOffsets(this IntPtr handle, long baseAddress, params (string className, int maxOffset)[] searchParameters)
-```
-``ScanClassNameOffsets`` function generates a multi-level pointer based on names of structures along its way.
-
-## Example
-```csharp
-Process gt = Process.GetProcessesByName("Growtopia").Single();
-IntPtr gthandle = gt.OpenProcess();
-
-long baseAddress = (long)gt.MainModule.BaseAddress;
-string res = "Growtopia.exe+";
-
-string[] targetClasses = new string[] { "App", "GameLogicComponent", "NetAvatar" };
-string offsets = "";
-long address = 0;
-long lastAddress = baseAddress;
-for (int index = 0; index < targetClasses.Length; index++)
-{
-    address = gthandle.ScanForPointerToClass(targetClasses[index], lastAddress, index == 0 ? 0x800000 : 0x1000);
-    offsets += (address - lastAddress).ToString("X") + Environment.NewLine;
-    gthandle.ReadInt64(address, out lastAddress);
-}
-MessageBox.Show(offsets);
-```
-Will result into these messagebox contents:
-
-![image](https://user-images.githubusercontent.com/42414542/121859416-f7202700-ccf7-11eb-9c5e-7e73bd50ae7b.png)
-
-Final product could look like this ``"Growtopia.exe+7667F8,AB0,198"``, which is what the [**Memory.dll**](https://github.com/erfg12/memory.dll/) takes as input, or [**my**](https://github.com/DefaultO/Intralism-Bot-2020/blob/master/src/Patchables.cs) / [**Azukii's**](https://github.com/Azukee/osu-rx/blob/master/osu!rx/osu/Memory/Signatures.cs) Design:
-```csharp
-public static Pointer NetAvatar = new Pointer
-{
-    Module = "Growtopia.exe",
-    Offset = "0x7667F8",
-    Offsets = new string[] { "AB0", "198" }
-};
-```
-
+## Keep in mind that RTTI information only generates for classes that contain virtual function tables, and the method implemented here is only guaranteed for MSVC-built applications. Admin rights and a 64-bit system is required.
