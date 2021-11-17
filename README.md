@@ -1,7 +1,7 @@
 ![RTTIScanner-Banner](https://user-images.githubusercontent.com/42414542/132094787-86636a02-8757-4f61-bd74-bcb20b463350.png)
 # ***RTTI*SCANNER**
 
-## <img src="./img/info.png" align="left" width="100px"/> Quick Reminder: Further (and better) Updates can be found in TLE's memory library project: <br/>https://github.com/TheLeftExit/TheLeftExit.Memory/blob/master/src/RTTI.cs <br clear="left"/>
+## <img src="./img/info.png" align="left" width="130px"/> Quick Reminder: Further (and better) Updates can be found in TLE's memory library project: <br/>https://github.com/TheLeftExit/TheLeftExit.Memory/blob/master/src/RTTI.cs <br clear="left"/>
 
 All Credits go towards **[@TheLeftExit](https://github.com/TheLeftExit)**. I believe knowing several technicues like this one as a hacker, reverser or just a programmer is important as they make our lifes easier. RTTI-Scanning is the yet unknown sister next to Signature/AoB scanning and Pointer Hunting, and all it needs is the right environment and the structure/class name to be the perfect option out of all these options.
 
