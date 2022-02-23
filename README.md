@@ -28,7 +28,7 @@ This Code Snippet got taken out of **TDEM** and shows how easy it is to dynamica
 
             Console.WriteLine("/// Initializing..", comment);
             Int32 appBase = 0x400000;
-            Int32 appBaseIncrement = 0x100000;
+            Int32 appBaseIncrement = 0x600000;
             long pointerToApp = gt.Handle.ScanClassName(baseAddress + appBase, "App", 0x600000);
             
             while (pointerToApp == 0)
